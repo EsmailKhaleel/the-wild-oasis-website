@@ -2,8 +2,8 @@ import axios from "axios";
 import { notFound } from "next/navigation";
 
 export const axiosInstance = axios.create({
-  // baseURL: process.env.NEXT_PUBLIC_API_URL,
-  baseURL: "http://localhost:5000/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  // baseURL: "http://localhost:5000/api",
 });
 
 export const getCabin = async function (cabinId) {
