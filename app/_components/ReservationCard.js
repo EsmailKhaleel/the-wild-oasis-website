@@ -1,6 +1,7 @@
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { format, formatDistance, isPast, isToday, parseISO } from "date-fns";
 import DeleteReservation from "./DeleteReservation";
+import PaymentButton from "./PaymentButton";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,11 +19,13 @@ async function ReservationCard({ booking }) {
     totalPrice,
     numGuests,
     status,
+    isPaid,
     created_at,
     cabinId: { name, image },
   } = booking;
 
   const isPastBooking = isPast(new Date(startDate));
+  const isUnpaid = !isPaid && status === 'unconfirmed';
 
   return (
     <div className="flex flex-col lg:flex-row border border-primary-800 rounded overflow-hidden">
@@ -44,15 +47,27 @@ async function ReservationCard({ booking }) {
           <h3 className="text-xl font-semibold">
             {numNights} nights in Cabin {name}
           </h3>
-          <span
-            className={`${
-              isPastBooking
-                ? "bg-yellow-800 text-yellow-200"
-                : "bg-green-800 text-green-200"
-            } h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm self-start sm:self-auto`}
-          >
-            {isPastBooking ? "past" : "upcoming"}
-          </span>
+          <div className="flex items-center gap-2">
+            <span
+              className={`${
+                isPastBooking
+                  ? "bg-accent-800 text-accent-200"
+                  : "bg-green-800 text-green-200"
+              } h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm`}
+            >
+              {isPastBooking ? "past" : "upcoming"}
+            </span>
+            {isUnpaid && (
+              <span className="bg-red-800 text-red-200 h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm">
+                unpaid
+              </span>
+            )}
+            {isPaid && (
+              <span className="bg-primary-800 text-primary-200 h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm">
+                paid
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Dates */}
@@ -75,6 +90,17 @@ async function ReservationCard({ booking }) {
             Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
           </p>
         </div>
+
+        {/* Payment button for unpaid reservations */}
+        {isUnpaid && (
+          <div className="mt-3">
+            <PaymentButton 
+              bookingId={_id} 
+              totalAmount={totalPrice}
+              className="w-full sm:w-auto"
+            />
+          </div>
+        )}
 
         {/* Action buttons on mobile (below content) */}
         {!isPastBooking && (

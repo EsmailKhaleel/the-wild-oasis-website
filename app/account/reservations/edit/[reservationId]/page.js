@@ -5,7 +5,7 @@ import { getBookingById } from "@/app/_lib/data-service";
 export default async function Page({ params }) {
   const { reservationId } = await params;
   const reservation = await getBookingById(reservationId);
-  const { cabinId, created_at, numGuests } = reservation;
+  const { cabinId, created_at, numGuests, isPaid } = reservation;
   const { maxCapacity } = cabinId;
 
   
@@ -31,13 +31,14 @@ export default async function Page({ params }) {
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="numGuests" className="block">How many guests?</label>
+          <label htmlFor="numGuests" className="block">How many guests? {isPaid && "(Cannot be changed after payment)"}</label>
           <select
             name="numGuests"
             id="numGuests"
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:opacity-50 disabled:cursor-not-allowed"
             required
             defaultValue={String(numGuests)}
+            disabled={isPaid}
           >
             <option value="" key="">
               Select number of guests...

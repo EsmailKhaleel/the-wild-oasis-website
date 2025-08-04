@@ -47,6 +47,7 @@ function ReservationForm({ cabin, user }) {
         action={async (formData) => {
           await createReservationActionWithBookingData(formData);
           resetRange();
+          router.push(`/checkout?bookingId=${bookingId}&totalAmount=${totalAmount}`);
         }}
         className="bg-primary-900 py-8 px-4 sm:px-16 text-base sm:text-lg flex flex-col gap-5"
       >
