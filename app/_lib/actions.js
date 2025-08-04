@@ -144,18 +144,13 @@ export async function createReservationAction(bookingData, formData) {
     status: "unconfirmed",
     extrasPrice: 0,
   };
-  try {
-    const response = await axiosInstance.post("/bookings", newBooking);
-    const { status, message, booking } = response.data;
-    if (!status) {
-      console.error(message);
-      throw new Error(message || "Booking could not be created");
-    }
-    console.log("New reservation:", booking);
-  } catch (error) {
-    console.error(error);
-    throw new Error(error.message || "Booking could not be created");
+  const response = await axiosInstance.post("/bookings", newBooking);
+  const { status, message, booking } = response.data;
+  if (!status) {
+    console.error(message);
+    throw new Error(message || "Booking could not be created");
   }
+  console.log("New reservation:", booking);
   revalidatePath(`/cabins/${bookingData.cabinId}`);
-
+  return booking;
 }

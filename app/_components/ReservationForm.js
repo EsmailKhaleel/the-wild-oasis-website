@@ -4,8 +4,10 @@ import useReservationStore from "../_zustand/ReservationStore";
 import { differenceInDays } from "date-fns";
 import { createReservationAction } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
+import { useRouter } from "next/navigation";
 
 function ReservationForm({ cabin, user }) {
+  const router = useRouter();
   const { maxCapacity, discount, regularPrice } = cabin;
   const range = useReservationStore((state) => state.range);
   const resetRange = useReservationStore((state) => state.resetRange);
@@ -45,9 +47,9 @@ function ReservationForm({ cabin, user }) {
 
       <form
         action={async (formData) => {
-          await createReservationActionWithBookingData(formData);
+          const newBooking = await createReservationActionWithBookingData(formData);
           resetRange();
-          router.push(`/checkout?bookingId=${bookingId}&totalAmount=${totalAmount}`);
+          router.push(`/checkout?bookingId=${newBooking._id.toString()}}&totalAmount=${newBooking.totalPrice.toString()}`);
         }}
         className="bg-primary-900 py-8 px-4 sm:px-16 text-base sm:text-lg flex flex-col gap-5"
       >
