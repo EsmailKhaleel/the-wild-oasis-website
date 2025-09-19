@@ -5,36 +5,36 @@ import {
   ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 
+const features = [
+  {
+    title: "Luxury Cabins",
+    description:
+      "Beautifully designed cabins with modern amenities and stunning architecture that seamlessly blends with nature.",
+    icon: HomeModernIcon,
+  },
+  {
+    title: "Mountain Views",
+    description:
+      "Breathtaking panoramic views of nature from every cabin, offering the perfect backdrop for your mountain escape.",
+    icon: GlobeAltIcon,
+  },
+  {
+    title: "Full Service",
+    description:
+      "24/7 concierge and housekeeping services ensuring your stay is nothing short of exceptional and worry-free.",
+    icon: SparklesIcon,
+  },
+  {
+    title: "Private Experience",
+    description:
+      "Secluded locations for ultimate privacy, allowing you to disconnect and reconnect with nature and loved ones.",
+    icon: ShieldCheckIcon,
+  },
+];
 export default function FeaturesSection() {
-  const features = [
-    {
-      title: "Luxury Cabins",
-      description:
-        "Beautifully designed cabins with modern amenities and stunning architecture that seamlessly blends with nature.",
-      icon: HomeModernIcon,
-    },
-    {
-      title: "Mountain Views",
-      description:
-        "Breathtaking panoramic views of nature from every cabin, offering the perfect backdrop for your mountain escape.",
-      icon: GlobeAltIcon,
-    },
-    {
-      title: "Full Service",
-      description:
-        "24/7 concierge and housekeeping services ensuring your stay is nothing short of exceptional and worry-free.",
-      icon: SparklesIcon,
-    },
-    {
-      title: "Private Experience",
-      description:
-        "Secluded locations for ultimate privacy, allowing you to disconnect and reconnect with nature and loved ones.",
-      icon: ShieldCheckIcon,
-    },
-  ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-primary-950 to-primary-900">
+    <section className="py-24 bg-gradient-to-b from-primary-950 to-primary-900 mt-[750px] sm:mt-[700px]">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center space-y-6 mb-16">
           <h2 className="text-5xl text-primary-50 font-bold">

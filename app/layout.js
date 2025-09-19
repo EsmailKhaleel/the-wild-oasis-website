@@ -24,12 +24,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${varelaRound.className} flex flex-col bg-primary-950 text-primary-100 antialiased min-h-screen select-none`}
+        className={`${varelaRound.className} relative flex flex-col bg-primary-950 text-primary-100 antialiased min-h-screen select-none`}
       >
         <Header />
-        <div className="flex-1 sm:px-8 sm:py-5 grid">
-          <main className="w-full max-w-7xl mx-auto sm:px-8 sm:py-5 p-3">{children}</main>
-        </div>
+          <main className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-8">{children}</main>
       </body>
     </html>
   );

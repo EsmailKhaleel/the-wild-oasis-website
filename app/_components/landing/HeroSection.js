@@ -5,8 +5,12 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 p-2 sm:rounded-xl sm:overflow-clip">
+    <section className="absolute inset-0 h-screen flex items-center justify-center overflow-hidden">
+      {/* black overlay */}
+      <div className="absolute z-10 inset-0 bg-black/40" ></div>
+
+      
+      <div className="absolute z-0 inset-0 p-2 sm:rounded-xl">
         <Image
           src={BG}
           quality={100}

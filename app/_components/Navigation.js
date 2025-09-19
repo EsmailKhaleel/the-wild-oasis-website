@@ -6,7 +6,7 @@ export default async function Navigation() {
   const session = await auth();
   return (
     <nav className="text-lg sm:text-xl">
-      <ul className="flex items-start flex-col gap-5 sm:flex-row sm:gap-16">
+      <ul className="flex items-start flex-col gap-2 sm:gap-4 sm:flex-row xl:gap-16">
         <li>
           <NavLink href="/">
             Home

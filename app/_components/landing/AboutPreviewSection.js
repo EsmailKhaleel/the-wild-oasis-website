@@ -9,12 +9,12 @@ export default function AboutPreviewSection() {
             <h2 className="text-4xl text-primary-50 font-bold">
               A Story of Nature and Luxury
             </h2>
-            <p className="text-lg text-primary-700 leading-relaxed">
+            <p className="text-lg text-primary-200 leading-relaxed">
               Founded in 2010, The Wild Oasis was born from a simple vision: to create a place where 
               luxury meets nature in perfect harmony. Our founders, avid nature lovers and hospitality 
               experts, wanted to offer guests an experience that goes beyond traditional accommodation.
             </p>
-            <p className="text-lg text-primary-700 leading-relaxed">
+            <p className="text-lg text-primary-200 leading-relaxed">
               Today, we continue to uphold our commitment to sustainable luxury, ensuring that every 
               guest leaves with memories that last a lifetime while preserving the natural beauty that 
               makes our location so special.
