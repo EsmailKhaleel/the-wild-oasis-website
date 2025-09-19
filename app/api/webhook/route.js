@@ -41,7 +41,7 @@ export async function POST(req) {
           console.log(`Payment succeeded: ${data.id}`)
           console.log(`Payment metadata:`, data.metadata)
           
-          // Update booking status in your backend
+          // Update booking status in backend
           if (data.metadata?.bookingId) {
             console.log(`Calling updateBookingPaymentStatus for booking: ${data.metadata.bookingId}`)
             await updateBookingPaymentStatus(data.metadata.bookingId, 'paid', data.id)
@@ -54,7 +54,7 @@ export async function POST(req) {
           data = event.data.object
           console.log(`Payment failed: ${data.id}`)
           
-          // Update booking status in your backend
+          // Update booking status in backend
           if (data.metadata?.bookingId) {
             await updateBookingPaymentStatus(data.metadata.bookingId, 'failed', data.id)
           }
@@ -65,7 +65,7 @@ export async function POST(req) {
           console.log(`Charge succeeded: ${data.id}`)
           console.log(`Charge metadata:`, data.metadata)
           
-          // Update booking status in your backend
+          // Update booking status in backend
           if (data.metadata?.bookingId) {
             console.log(`Calling updateBookingPaymentStatus for booking: ${data.metadata.bookingId}`)
             await updateBookingPaymentStatus(data.metadata.bookingId, 'paid', data.payment_intent)
@@ -101,31 +101,21 @@ export async function POST(req) {
   return NextResponse.json({ message: 'Received' }, { status: 200 })
 }
 
-// Function to update booking payment status in your backend
+// Function to update booking payment status in backend
 async function updateBookingPaymentStatus(bookingId, status, paymentIntentId) {
   try {
-    console.log(`=== UPDATING BOOKING PAYMENT STATUS ===`);
-    console.log(`Booking ID: ${bookingId}`);
-    console.log(`Status: ${status}`);
-    console.log(`Payment Intent ID: ${paymentIntentId}`);
-
     const requestBody = {
       isPaid: status === 'paid',
       paymentIntentId: paymentIntentId,
       status: status === 'paid' ? 'confirmed' : 'unconfirmed',
     };
 
-    console.log(`Request body:`, requestBody);
-
     const response = await axiosInstance.patch(
       `/bookings/${bookingId}/payment-status`,
       requestBody
     );
 
-    console.log(`Response status: ${response.status}`);
-    console.log(`Response data:`, response.data);
-
-    console.log(`Successfully updated booking ${bookingId} payment status to ${status}`);
+    console.log(`Response: ${response}`);
   } catch (error) {
     console.error('Error updating booking payment status:', error);
 
