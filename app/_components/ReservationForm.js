@@ -27,7 +27,7 @@ function ReservationForm({ cabin, user }) {
   );
   return (
     <div className="w-full h-full flex flex-col justify-between">
-<div className="bg-primary-800 text-primary-300 px-4 sm:px-16 py-4 flex flex-row justify-between items-start gap-2 sm:gap-4">
+      <div className="bg-primary-800 text-primary-300 px-4 sm:px-16 py-4 flex flex-row justify-between items-start gap-2 sm:gap-4">
         <p>Logged in as</p>
 
         <div className="flex gap-4 items-center">
@@ -47,14 +47,20 @@ function ReservationForm({ cabin, user }) {
 
       <form
         action={async (formData) => {
-          const newBooking = await createReservationActionWithBookingData(formData);
+          const newBooking = await createReservationActionWithBookingData(
+            formData
+          );
           resetRange();
-          router.push(`/checkout?bookingId=${newBooking._id.toString()}}&totalAmount=${newBooking.totalPrice.toString()}`);
+          router.push(
+            `/checkout?bookingId=${newBooking._id.toString()}}&totalAmount=${newBooking.totalPrice.toString()}`
+          );
         }}
         className="bg-primary-900 py-8 px-4 sm:px-16 text-base sm:text-lg flex flex-col gap-5"
       >
         <div className="space-y-2">
-          <label htmlFor="numGuests" className="block">How many guests?</label>
+          <label htmlFor="numGuests" className="block">
+            How many guests?
+          </label>
           <select
             name="numGuests"
             id="numGuests"

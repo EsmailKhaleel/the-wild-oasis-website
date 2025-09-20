@@ -25,35 +25,71 @@
   --color-accent-900: #4b351b;
   --color-accent-950: #382814;
 }
-  .spinner {
-    margin: 3.2rem auto 1.6rem;
-    width: 60px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 8px solid theme('colors.primary.900');
-    border-right-color: theme('colors.primary.200');
-    animation: rotate 1s infinite linear;
-  }
+.spinner {
+  margin: 3.2rem auto 1.6rem;
+  width: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid theme("colors.primary.900");
+  border-right-color: theme("colors.primary.200");
+  animation: rotate 1s infinite linear;
+}
 
-  .spinner-mini {
-    margin: 0;
-    width: 20px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 2px solid theme('colors.primary.200');
-    border-right-color: transparent;
-    animation: rotate 1s infinite linear;
-  }
+.spinner-mini {
+  margin: 0;
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid theme("colors.primary.200");
+  border-right-color: transparent;
+  animation: rotate 1s infinite linear;
+}
 
-  @keyframes rotate {
-    to {
-      transform: rotate(1turn);
-    }
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
   }
+}
 
 .rdp {
   --rdp-cell-size: 32px !important;
-  --rdp-accent-color: theme('colors.accent.500') !important;
-  --rdp-background-color: theme('colors.accent.600') !important;
+  --rdp-accent-color: theme("colors.accent.500") !important;
+  --rdp-background-color: theme("colors.accent.600") !important;
   margin: 0 !important;
+}
+
+dialog {
+  opacity: 0;
+  scale: 0;
+  transition: all 0.3s allow-discrete;
+}
+
+dialog[open] {
+  opacity: 1;
+  scale: 1;
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    scale: 0;
+  }
+}
+
+dialog::backdrop {
+  transform-origin: top;
+  transform: scaleY(0);
+  background: rgba(0, 0, 0, 0);
+  transition: all 0.3s allow-discrete;
+}
+dialog[open]::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scaleY(100%);
+}
+
+@starting-style {
+  dialog[open]::backdrop {
+    transform: scaleY(0);
+    background: rgba(0, 0, 0, 0);
+  }
 }

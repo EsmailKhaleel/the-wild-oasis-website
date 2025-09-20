@@ -7,8 +7,8 @@ export default function CabinData({ cabin }) {
     cabin;
     
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-4 md:px-10 mb-4 md:mb-24">
-      <div className="relative scale-[1.2] -translate-x-3 w-full aspect-[4/3] sm:aspect-auto">
+    <div className="grid grid-cols-1 md:grid-cols-[3fr_4fr] gap-8 md:gap-0 mb-4 md:mb-24">
+      <div className="relative w-full h-[400px] md:h-[600px]">
         <Image
           src={image}
           fill
@@ -18,8 +18,8 @@ export default function CabinData({ cabin }) {
         />
       </div>
 
-      <div>
-        <h3 className="text-accent-100 font-black text-3xl text-wrap md:text-7xl mb-5 md:translate-x-[-254px] bg-primary-950 px-3 md:p-6 pb-1 md:w-[150%]">
+      <div className="flex flex-col border border-primary-800 py-3 px-4 md:px-10 md:my-4" >
+        <h3 className="text-accent-100 font-black text-3xl text-wrap md:text-7xl mb-5 md:translate-x-[-254px] bg-primary-950 px-3 md:p-6 pb-1 md:w-[140%]">
           Cabin {name}
         </h3>
 
