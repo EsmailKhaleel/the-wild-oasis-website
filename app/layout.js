@@ -1,6 +1,4 @@
 import Header from "@/app/_components/Header";
-import Logo from "./_components/Logo";
-import Navigation from "@/app/_components/Navigation";
 import "@/app/_styles/globals.css";
 import { Varela_Round } from "next/font/google";
 
