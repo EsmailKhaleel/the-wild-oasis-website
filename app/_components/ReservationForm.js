@@ -52,7 +52,7 @@ function ReservationForm({ cabin, user }) {
           );
           resetRange();
           router.push(
-            `/checkout?bookingId=${newBooking._id.toString()}}&totalAmount=${newBooking.totalPrice.toString()}`
+            `/checkout?bookingId=${newBooking._id.toString()}&totalAmount=${Number(newBooking.totalPrice)}`
           );
         }}
         className="bg-primary-900 py-8 px-4 sm:px-16 text-base sm:text-lg flex flex-col gap-5"
